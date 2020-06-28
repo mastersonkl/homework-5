@@ -31,24 +31,26 @@ colorUpdate()
 // WHEN I click into a timeblock
 // THEN I can enter an event
 // WHEN I click the save button for that timeblock
-var innerText = $(".description")
 
-$(".saveBtn").click(function () {
+$(document).ready(function () {
+    $(".saveBtn").click(function () {
 
-    var innerText = (".description").siblings.val(this).parent
+        var innerText = $(this).siblings(".description").val()
 
-    var innerText_serialized = JSON.stringify(innerText);
+        console.log(innerText);
 
-    localStorage.setItem(innerText, innerText_serialized);
+        var timeBlock = $(this).parent().attr("id")
 
-    let innerText_deserialized = JSON.parse(localStorage.getItem(innerText));
+        console.log(timeBlock)
 
-    console.log(innerText_deserialized);
+        localStorage.setItem(innerText, timeBlock);
 
-    //  var textReply = (".description").val() 
-    // console.log(textReply)
 
-})
+    });
+});
+
+
+
 
 
 // localStorage.setItem(this.parent, JSON.stringify());
