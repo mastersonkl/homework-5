@@ -1,33 +1,15 @@
 
 // THEN the current day is displayed at the top of the calendar
-var currentDay = $("#currentDay")
 
-currentDay.text(moment().format("dddd"))
+
+
 
 // WHEN I scroll down
 // THEN I am presented with timeblocks for standard business hours
 // WHEN I view the timeblocks for that day
 // THEN each timeblock is color coded to indicate whether it is in the past, present, or future
 
-var colorUpdate = function () {
-    var currentHour = moment().hours()
-    $(".time-block").each(function () {
-        var hourBlock = Number($(this).attr("id").split("-")[1])
-        // compare if the hourBlock is < currentHour 
-        if (hourBlock < currentHour) {
-            // then .past 
-            $(this).addClass("past")
-        }
-        if (hourBlock === currentHour) {
-            $(this).addClass("present")
-        }
-        if (hourBlock > currentHour) {
-            // then .past 
-            $(this).addClass("future")
-        }
-    })
-}
-colorUpdate()
+
 // WHEN I click into a timeblock
 // THEN I can enter an event
 // WHEN I click the save button for that timeblock
@@ -48,8 +30,32 @@ $(document).ready(function () {
 
     });
 
-   $("#hour-9 .description").val(localStorage.getItem("hour-9"));
+ 
 
+   var currentDay = $("#currentDay")
+   currentDay.text(moment().format("dddd"))
+
+   var colorUpdate = function () {
+    var currentHour = moment().hours();
+    $(".time-block").each(function () {
+        var hourBlock = Number($(this).attr("id").split("-")[1])
+        // compare if the hourBlock is < currentHour 
+        if (hourBlock < currentHour) {
+            // then .past 
+            $(this).addClass("past")
+        }
+        if (hourBlock === currentHour) {
+            $(this).addClass("present")
+        }
+        if (hourBlock > currentHour) {
+            // then .past 
+            $(this).addClass("future")
+        }
+    })
+}
+colorUpdate();
+
+$("#hour-9 .description").val(localStorage.getItem("hour-9"));
 
 });
 
