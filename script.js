@@ -31,10 +31,32 @@ colorUpdate()
 // WHEN I click into a timeblock
 // THEN I can enter an event
 // WHEN I click the save button for that timeblock
+var innerText = $(".description")
+
+$(".saveBtn").click(function () {
+
+    var innerText = (".description").siblings.val(this).parent
+
+    var innerText_serialized = JSON.stringify(innerText);
+
+    localStorage.setItem(innerText, innerText_serialized);
+
+    let innerText_deserialized = JSON.parse(localStorage.getItem(innerText));
+
+    console.log(innerText_deserialized);
+
+    //  var textReply = (".description").val() 
+    // console.log(textReply)
+
+})
+
+
+// localStorage.setItem(this.parent, JSON.stringify());
+
 
 // create an event listener that listens for a click on the save btn
 // target the save btn with jquery, $(".saveBtn").click(function(){})
-// get the text value from the text area (use $(this)) -> hint use .sibling(".description").val()
+// get the text value from the text area (use $(".saveBtn").click(function(){})) -> hint use .sibling(".description").val()
 // hint, use .parent on $(this)
 // save it to local storage
 
@@ -44,4 +66,4 @@ colorUpdate()
 // if anythign exits
 // use .val("example")
 
-// THEN the saved events persist
+// THEN the saved events persist 
